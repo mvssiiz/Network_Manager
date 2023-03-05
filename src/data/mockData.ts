@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import { tokens } from "../theme";
 
 export const mockDataMetro = [
@@ -243,4 +241,4 @@ export const mockDataMetro = [
   },
  
 ]
->>>>>>> Stashed changes
+
