@@ -6,22 +6,22 @@ import Header from "../../components/Header";
 import {Typography, TextField, Button } from "@mui/material";
 
 
-const MetroAdd = () => {
+const LSWAdd = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [name, setName] = useState("");
-  const [ip, setIp] = useState("");
+  const [uplink, setUplink] = useState("");
   const [model, setModel] = useState("");
 
-  const addMetro = () => {
-    axios.post("http://localhost:3001/createmetro",
-    { name: name, ip: ip, model: model }).then(() => { console.log('yes') })
+  const addLSW = () => {
+    axios.post("http://localhost:3001/createLSW",
+    { name: name, uplink:uplink, model: model }).then(() => { console.log('yes') })
     
   };
 
   return (
     <Box m={"20px"}>
-    <Header title="Add Metro" subtitle="subtitle" addlink={"/"} withbtn={true} variant="1"/> 
+    <Header title="Add LSW" subtitle="subtitle" addlink={"/LSW"} withbtn={true} variant="1"/> 
     <Box sx={{ padding: "24px" }}  style={{ backgroundColor:colors.blueAccent[700]}}>
     <Box >
       <Typography
@@ -46,13 +46,13 @@ const MetroAdd = () => {
         gutterBottom
         sx={{ fontWeight: "bold", mb: "8px" }}
       >
-        IP:
+        Uplink:
       </Typography>
       <TextField
         variant="outlined"
         fullWidth
-        value={ip}
-        onChange={(event) => setIp(event.target.value)}
+        value={uplink}
+        onChange={(event) => setUplink(event.target.value)}
       />
     </Box>
     <Box sx={{ mt: "16px" }}>
@@ -72,8 +72,8 @@ const MetroAdd = () => {
       />
     </Box>
     <Box sx={{ mt: "24px" }}>
-      <Button variant="contained" color="primary" onClick={addMetro}>
-        Add Metro
+      <Button variant="contained" color="primary" onClick={addLSW}>
+        Add LSW
       </Button>
     </Box>
   </Box>
@@ -81,4 +81,4 @@ const MetroAdd = () => {
   );
 };
 
-export default MetroAdd;
+export default LSWAdd;

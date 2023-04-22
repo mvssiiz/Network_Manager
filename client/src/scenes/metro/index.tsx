@@ -8,18 +8,26 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import MetroPorts from "./MetroPorts";
+import BlocksMap from "./BlocksMap";
 import { Link } from "react-router-dom";
+import EditPortField from "./EditPortField";
+import SaveIcon from '@mui/icons-material/Save';
 
 const Metro = () => {
 
   const theme = useTheme();
   const colors =tokens(theme.palette.mode)
+  const [selectedMetro, setSelectedMetro] = useState([]);
+
+  const [portAddress, setPortAddress] = useState("No Port Selected");
+  const [portId, setPortId] = useState();
+  const [isEditing,setIsEditing]= useState(false);
+  
   const [routerName, setRouterName] = useState("No Router Selected");
   const [routerIp, setRouterIP] = useState("No Router Selected");
   const [routerModel, setRouterModel] = useState("No Router Selected");
-
   const [metroList, setMetroList] = useState([]);
+
   const getMetro = () =>{
     axios.get("http://localhost:3001/metro").then((response)=>{
     setMetroList(response.data)
@@ -31,15 +39,19 @@ const Metro = () => {
   }, []);
 
   function getPort(childData:any){
-    console.log(childData);
+    setPortAddress(childData.Address);
+
+    setPortId(childData.ID);
+
   };
 
   function callbackFunction(childData:any){
-    console.log(childData.ip);
     setRouterName(childData.name);
     setRouterIP(childData.ip);
     setRouterModel(childData.model)
-    
+    setTimeout(() => {
+      setSelectedMetro(childData)
+    }, 500); 
   };
   function handelMetroDelete(){
     if (routerName==="No Router Selected"){
@@ -104,14 +116,52 @@ const Metro = () => {
             
             <Box pt={"5px"} minHeight={'40.9vh'}
             sx={{backgroundColor:colors.blueAccent[500]}}>
-              <MetroPorts parentCallback={getPort}></MetroPorts>
+              <BlocksMap parentCallback={getPort} selectedMetro={selectedMetro}></BlocksMap>
             </Box>
             
         
           </Box>
-          <Box gridColumn="span 3" gridRow="span 5" style={{ backgroundColor:colors.blueAccent[500]}}> </Box>
-          
-          <Box display="felx" gridColumn="span 7" gridRow="span 2"  >
+          <Box gridColumn="span 3" gridRow="span 5" minHeight={'81vh'} style={{ backgroundColor:colors.blueAccent[500]}}> 
+          <Box display={"flex"} height={'5.5vh'}  flexDirection={'row'} sx={{backgroundColor:colors.blueAccent[800]}}
+            justifyContent="space-between" alignItems={"center"} >
+              
+              <Typography pl={'10px'} variant="h5" fontWeight="600" color={colors.grey[100]}>
+              {portAddress}
+            </Typography>
+              
+            <Box   justifyContent="space-between">
+
+            <IconButton aria-label="save" sx={{color:colors.grey[200]}}
+            disabled={(portAddress === 'No Port Selected') || (!isEditing) ? true:false}
+            onClick={()=>setIsEditing(false)}>
+              <SaveIcon/>
+            </IconButton>
+
+            <IconButton aria-label="edit" sx={{color:colors.grey[200]}}
+            disabled={(portAddress === 'No Port Selected') || (isEditing)? true:false}
+            onClick={()=>setIsEditing(true)}>
+              <EditIcon/>
+              
+            </IconButton>
+           
+
+            </Box>
+
+            </Box>
+            <Box m={'3px'}>
+            {portAddress != 'No Port Selected' ? (
+                <EditPortField isEditing={isEditing} portId={portId} />
+            ) : (
+                
+                    null
+                
+            )}
+            
+            </Box>
+            
+          </Box>
+
+          <Box display="felx" gridColumn="span 7" gridRow="span 2">
             <MetroArray parentCallback={callbackFunction} data={metroList}  />
           </Box>
           
