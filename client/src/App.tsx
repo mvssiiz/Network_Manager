@@ -1,3 +1,4 @@
+import 'devextreme/dist/css/dx.light.css';
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
@@ -14,7 +15,10 @@ import MetroEdit from "./scenes/metro/MetroEdit";
 import LSWAdd from "./scenes/lsw/LSWAdd";
 import LSWEdit from "./scenes/lsw/LSWEdit";
 import RouterRack from "./scenes/wide-view";
-
+import FoAdd from './scenes/backhaul/FoAdd';
+import Register from './scenes/User/Register';
+import Login from './scenes/User/Login';
+import UserManager from './scenes/User/UserManager';
 
 function App() {
   const {theme, toggleColorMode} = useMode();
@@ -36,7 +40,14 @@ function App() {
             <Route path="/LSW/add" element={<LSWAdd/>} />
             <Route path="/LSW/edit" element={<LSWEdit/>} />
             <Route path="/Breakout" element={<Breakout />} />
-            <Route path="/Backhaul" element={<Backhaul />} />
+            <Route path="/Backhaul/144FO" element={<Backhaul foVarient={144} />} />
+            <Route path="/Backhaul/72FO" element={<Backhaul foVarient={72} />} />
+            <Route path="/Backhaul/48FO" element={<Backhaul foVarient={48} />} />
+            <Route path="/Backhaul/24FO" element={<Backhaul foVarient={24} />} />
+            <Route path="/Backhaul/Add" element={<FoAdd/>} />
+            <Route path="/Register" element={<Register/>} />
+            <Route path="/Login" element={<Login/>} />
+            <Route path="/Users/ManageRoles" element={<UserManager/>} />
             </Routes>
           </main>
         </div>
