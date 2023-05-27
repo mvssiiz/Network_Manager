@@ -1,19 +1,19 @@
 FROM node:18.14.2
 
-# Set the working directory
+# Définir le répertoire de travail
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if exists) to the working directory
+# Copiez package.json et package-lock.json (s'il existe) dans le répertoire de travail
 COPY package.json package-lock.json* ./
 
-# Install dependencies
+# Installer les dépendances
 RUN npm install
 
-# Copy all files to the working directory
+# Copier tous les fichiers dans le répertoire de travail
 COPY . .
 
-# Expose the port that your Vite app will run on
+# Exposez le port sur lequel votre application Vite s'exécutera
 EXPOSE 5173
 
-# Start the development server
+# Démarrer le serveur de développement
 CMD ["npm", "run", "dev"]
