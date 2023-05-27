@@ -37,7 +37,7 @@ const BlocksMapLsw: React.FC<Props> = ({ parentCallback, selecteLsw }) => {
 
   const enableBlock = async (blockId: string) => {
     try {
-      await axios.put(`/api/updatelswblocks/${blockId}`, {
+      await axios.put(`http://localhost:3001/updatelswblocks/${blockId}`, {
         state: 1,
       });
       console.log('Block state updated');
@@ -50,7 +50,7 @@ const BlocksMapLsw: React.FC<Props> = ({ parentCallback, selecteLsw }) => {
   const getlswBlocks = async () => {
     try {
       const response = await axios.get<Block[]>(
-        `/api/lswblocks/${selecteLsw.id}`
+        `http://localhost:3001/lswblocks/${selecteLsw.id}`
       );
       setlswBlocksList(response.data);
       console.log(selecteLsw);
@@ -60,7 +60,7 @@ const BlocksMapLsw: React.FC<Props> = ({ parentCallback, selecteLsw }) => {
   };
 
   const createlswBlocks = async (props: any, i: number, length: number) => {
-    await axios.post('/api/createlswblock', {
+    await axios.post('http://localhost:3001/createlswblock', {
       name: `${props.name}-${i}`,
       lswid: props.id,
       state: false,

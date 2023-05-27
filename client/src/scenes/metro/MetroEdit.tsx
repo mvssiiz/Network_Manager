@@ -17,7 +17,7 @@ const MetroEdit = () => {
 
   const updateMetro = (name:any) => {
     axios
-      .put("/api/updatemetro", {
+      .put("http://localhost:3001/updatemetro", {
         ip: newIp,
         model: newModel,
         name: name,

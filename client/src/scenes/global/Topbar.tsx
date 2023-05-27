@@ -12,7 +12,7 @@ import axios from "axios";
 const Topbar:React.FC = () => {
   const handleLogout = async () => {
     try {
-      await axios.get('/api/logout');
+      await axios.get('http://localhost:3001/logout');
       // Perform any additional actions or redirects after successful logout
     } catch (error) {
       console.log(error);

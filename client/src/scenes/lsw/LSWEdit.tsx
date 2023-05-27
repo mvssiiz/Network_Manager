@@ -18,7 +18,7 @@ const LSWEdit = () => {
 
   const updateLSW = () => {
     axios
-      .put(`/api/updateLSW/${lswId}`, {
+      .put(`http://localhost:3001/updateLSW/${lswId}`, {
         uplink: uplink,
         model: model,
         name: name,

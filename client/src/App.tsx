@@ -35,7 +35,7 @@ function App() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
    
-    axios.get("/api/logincheck").then((response) => {
+    axios.get("http://localhost:3001/logincheck").then((response) => {
       if (response.data.loggedIn == true) {
         console.log('hey')
         setUserData(response.data.user[0]);

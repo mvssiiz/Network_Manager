@@ -250,7 +250,7 @@ const EditableRow = ({
   const handleSaveClick = (activeid: any, data: any) => {
     console.log(data);
     axios
-      .put(`/api/updateReg/${activeid}`, {
+      .put(`http://localhost:3001/updateReg/${activeid}`, {
         A: data.A,
         B: data.B,
         FO: data.FO,

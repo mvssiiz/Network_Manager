@@ -64,7 +64,7 @@ const CreateCentralDialog: React.FC<Props> = ({ open, onClose }) => {
     setLoading(true);
     try {
       const response = await axios.post<{ data: string }>(
-        `/api/createcentral/${name}`,
+        `http://localhost:3001/createcentral/${name}`,
         {}
       );
       const newCentralId = response.data;
@@ -75,7 +75,7 @@ const CreateCentralDialog: React.FC<Props> = ({ open, onClose }) => {
         for (let j = 0; j < reglette.length; j++) {
           for (let k = 0; k < regNames.length; k++) {
             const res = await axios.post(
-              "/api/createregdata",
+              "http://localhost:3001/createregdata",
               {
                 name: regNames[k],
                 centralid: newCentralId,
@@ -175,7 +175,7 @@ const Breakout = () => {
   }, []);
 
   const getCentral = () => {
-    axios.get("/api/central").then((response) => {
+    axios.get("http://localhost:3001/central").then((response) => {
       setCentralList(response.data);
       console.log(response.data);
     });
@@ -199,7 +199,7 @@ const Breakout = () => {
     console.log(selectedItem2);
     console.log(event.target.value);
     axios
-      .get(`/api/regdata/${selectedItem1}?armoirid=${selectedItem2}&regid=${event.target.value}`)
+      .get(`http://localhost:3001/regdata/${selectedItem1}?armoirid=${selectedItem2}&regid=${event.target.value}`)
       .then((response) => {
         console.log(response.data);
         setRegData(response.data);

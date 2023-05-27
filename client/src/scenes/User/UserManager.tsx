@@ -42,7 +42,7 @@ const UserTable = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/api/users');
+      const response = await axios.get('http://localhost:3001/users');
       const dataWithKeys = response.data.map((item) => ({ ...item, key: item.id }));
       setTableData(dataWithKeys);
     } catch (error) {
@@ -53,7 +53,7 @@ const UserTable = () => {
   const handleChange = async (value, record) => {
     try {
       // Make an API call to update the user's role in the database
-      await axios.put(`/api/users/${record.id}`, { role: value });
+      await axios.put(`http://localhost:3001/users/${record.id}`, { role: value });
 
       // Update the role in the local table data
       const newData = [...tableData];

@@ -26,7 +26,7 @@ const lswPortsMapLsw = ({ block, parentCallback }: { parentCallback: (childData:
     }, [block]);
 
     const getlswPorts =  () => {
-        axios.get(`/api/lswports/${block.id}`).then((response)=>{
+        axios.get(`http://localhost:3001/lswports/${block.id}`).then((response)=>{
             setPortList(response.data);
             if (!checkCalledRef.current) { 
                 check((response.data),block);
@@ -38,7 +38,7 @@ const lswPortsMapLsw = ({ block, parentCallback }: { parentCallback: (childData:
     };
 
     const createPort = async (key: any, i: any) => {
-        await axios.post("/api/createlswport",
+        await axios.post("http://localhost:3001/createlswport",
             { blockid: key, slot: i });
         console.log('Port Created');
     };

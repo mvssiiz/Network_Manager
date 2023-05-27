@@ -31,7 +31,7 @@ const EditPortField = ({ portId,role}:{portId:any;role: string;}) => {
 
 function handelSaveClick(){
   axios
-  .put(`/api/updateport/${portId}`, {
+  .put(`http://localhost:3001/updateport/${portId}`, {
     address: portAddress,
     affport: portAff,
     breakout: portBreakout,
@@ -46,7 +46,7 @@ function handelSaveClick(){
 
     const getPort = async () => {
         try {
-            const response = await axios.get(`/api/port/${portId}`);
+            const response = await axios.get(`http://localhost:3001/port/${portId}`);
             const portData = response.data[0];
              setPortOptHead(portData.opthead);
              setPortAddress(portData.address);

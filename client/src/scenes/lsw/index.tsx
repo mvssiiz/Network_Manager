@@ -49,7 +49,7 @@ const LSW = ({role}:{role:any}) => {
     if (lswName==="No Router Selected"){
       return ;
     }else{
-      axios.delete(`/api/deleteLSW/${id}`);
+      axios.delete(`http://localhost:3001/deleteLSW/${id}`);
       window.location.reload();
     }
   };

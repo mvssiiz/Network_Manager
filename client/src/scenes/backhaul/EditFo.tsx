@@ -40,13 +40,13 @@ const EditFo = ({ selectedFo,foName,role }: { selectedFo: any; foName:any ;role:
     if (foName==="No FO Selected"){
       return ;
     }else{
-      axios.delete(`/api/deleteFO/${id}`);
+      axios.delete(`http://localhost:3001/deleteFO/${id}`);
       window.location.reload();
     }
   };
   function handelSaveClick() {console.log(selectedFo.ID);
         axios
-      .put(`/api/updatefo/${selectedFo.ID}`, {
+      .put(`http://localhost:3001/updatefo/${selectedFo.ID}`, {
         name: name,
         client: client,
         pos: pos,

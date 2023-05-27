@@ -25,7 +25,7 @@ const FoAdd = () => {
 
   const addfo = () => {
     axios
-      .post("/api/createfo", {
+      .post("http://localhost:3001/createfo", {
         name: name,
         client: client,
         pos: pos,

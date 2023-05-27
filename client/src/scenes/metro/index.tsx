@@ -71,7 +71,7 @@ const Metro = ({role}:{role:any}) => {
             <Button
               onClick={() => {
                 axios
-                  .delete(`/api/deletemetro/${routerName}`)
+                  .delete(`http://localhost:3001/deletemetro/${routerName}`)
                   .then(() => {
                     handleClose();
                     window.location.reload();
@@ -119,7 +119,7 @@ const Metro = ({role}:{role:any}) => {
 
 
   const getMetro = () => {
-    axios.get("/api/metro").then((response) => {
+    axios.get("http://localhost:3001/metro").then((response) => {
       setMetroList(response.data);
     });
   };

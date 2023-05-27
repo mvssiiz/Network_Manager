@@ -28,7 +28,7 @@ const Settings = ({ user }) => {
   const handleSaveChanges = async () => {
     try {
       // Make an API call to update the user's information
-      await axios.put(`/api/user/${user.id}`, {
+      await axios.put(`http://localhost:3001/user/${user.id}`, {
         username,
         email,
         gender,

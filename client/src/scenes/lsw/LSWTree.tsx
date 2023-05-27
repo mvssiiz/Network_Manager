@@ -135,7 +135,7 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
   }
   const [lswList, setlswList] = useState([ {id:0,name:"ERROR",model:"",uplink:""}]);
 const getLSW = () =>{
-  axios.get("/api/lsw").then((response)=>{
+  axios.get("http://localhost:3001/lsw").then((response)=>{
     setlswList(response.data)
   });
 

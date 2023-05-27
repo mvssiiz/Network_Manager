@@ -22,7 +22,7 @@ const Backhaul = ({ foVarient,role }: { foVarient: number;role:string}) => {
     delay: 300,
   });
   useEffect(() => {
-    axios.get(`/api/fo/${foVarient}`).then((response) => {
+    axios.get(`http://localhost:3001/fo/${foVarient}`).then((response) => {
       setFoData(response.data);
     });
   }, [foVarient]);

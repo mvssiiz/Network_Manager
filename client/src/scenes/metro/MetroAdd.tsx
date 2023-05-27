@@ -14,7 +14,7 @@ const MetroAdd = () => {
   const [model, setModel] = useState("");
 
   const addMetro = () => {
-    axios.post("/api/createmetro",
+    axios.post("http://localhost:3001/createmetro",
     { name: name, ip: ip, model: model }).then(() => { console.log('yes') })
     
   };

@@ -39,7 +39,7 @@ const EditLswPortField = ({
 
   function handelSaveClick() {
     axios
-      .put(`/api/updatelswport/${portId}`, {
+      .put(`http://localhost:3001/updatelswport/${portId}`, {
         address: portAddress,
         client: client,
         breakout: portBreakout,
@@ -55,7 +55,7 @@ const EditLswPortField = ({
   const getPort = async () => {
     try {
       const response = await axios.get(
-        `/api/lswport/${portId}`
+        `http://localhost:3001/lswport/${portId}`
       );
       const portData = response.data[0];
       setClient(portData.client);

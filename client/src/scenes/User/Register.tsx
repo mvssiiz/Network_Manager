@@ -67,7 +67,7 @@ const Register = () => {
     }
     setSuccess(true);
     console.log({ user, pwd });
-    axios.post("/api/register", {
+    axios.post("http://localhost:3001/register", {
       username: user,
       password: pwd,
     }).then((response) => {

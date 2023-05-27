@@ -10,7 +10,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 app.use(cors({
-  origin: "http://client", // Replace with your React app's URL
+  origin: "http://localhost:5173", // Replace with your React app's URL
   methods: ["GET", "POST","DELETE","PUT"],
   credentials: true,
 }));
@@ -33,22 +33,22 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const db = mysql.createConnection({
-  host: 'mysql_db', 
-  user: 'root', 
-  password: 'MYSQL_ROOT_PASSWORD', 
-  database: 'optidocdb' 
-})
+// const db = mysql.createConnection({
+//   host: 'mysql_db', 
+//   user: 'root', 
+//   password: 'MYSQL_ROOT_PASSWORD', 
+//   database: 'optidocdb' 
+// })
 
 ////////////////////
 const login = DbAdmin.info;
-// const db = mysql.createConnection({
-//   user: login.user,
-//   host: login.host,
-//   password: login.password,
-//   database: login.database,
-//   insecureAuth: login.insecureAuth,
-// });
+const db = mysql.createConnection({
+  user: login.user,
+  host: login.host,
+  password: login.password,
+  database: login.database,
+  insecureAuth: login.insecureAuth,
+});
 
 app.post("/register", (req, res) => {
   const username = req.body.username;
@@ -656,6 +656,6 @@ app.post("/createregdata", (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////////
 app.listen(3001, () => {
   console.log(
-    "  Server running on port 3001 \n  ➜  Local:   /api/ "
+    "  Server running on port 3001 \n  ➜  Local:   http://localhost:3001/ "
   );
 });

@@ -30,7 +30,7 @@ const Login = ({ onLogin }: { onLogin: (childData: any) => void }) => {
     console.log(user, pwd);
 
     try {
-      const response = await axios.post('/api/login', {
+      const response = await axios.post('http://localhost:3001/login', {
         username: user,
         password: pwd,
       });
