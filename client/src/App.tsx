@@ -22,7 +22,7 @@ import Settings from './scenes/User/Settings';
 import axios from 'axios';
 import NotFound from './scenes/global/NotFound';
 import { TailSpin } from "react-loader-spinner";
-
+import './App.css'
 
 
 function App() {
@@ -47,6 +47,18 @@ function App() {
       
     });
   }, []);
+  useEffect(() => {
+    const body = document.querySelector("body");
+  body.setAttribute("data-theme", "light"); // Set initial theme to "light"
+  
+    // Set initial theme based on the color mode
+    body.setAttribute("data-theme", theme.palette.mode === "dark" ? "dark" : "light");
+  
+    // ... rest of your code ...
+    return () => {
+      body.removeAttribute("data-theme");
+    };
+  }, [theme.palette.mode]); // Add the `theme` dependency
 
   const handleLogin = (data:any) => {
     setUserData(data[0]); 

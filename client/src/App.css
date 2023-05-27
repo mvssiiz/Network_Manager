@@ -1,0 +1,7 @@
+body {
+    background-image: url("./assets/light-mode.png"); /* Light theme background image */
+  }
+  
+  body[data-theme="dark"] {
+    background-image: url("./assets/dark-mode.png");
+  }
