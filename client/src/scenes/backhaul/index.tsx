@@ -44,7 +44,7 @@ const Backhaul = ({ foVarient,role }: { foVarient: number;role:string}) => {
         subtitle="Description"
         addlink="/Backhaul/Add"
         withbtn={role ==='Administrateur'}
-        variant={""}
+        variant={"Ajouter, modifier et supprimer des connexions de backhaul fibre optique"}
       />
 
       <Box

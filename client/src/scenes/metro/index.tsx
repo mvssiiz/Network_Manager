@@ -152,7 +152,7 @@ const Metro = ({role}:{role:any}) => {
     <Box m="20px">
       <Header
         title="Metro"
-        subtitle="Description"
+        subtitle="Gérer tout le réseau de métro de grand Ariana"
         addlink="/Metro/add"
         withbtn={role==='Administrateur'} 
         variant="2"

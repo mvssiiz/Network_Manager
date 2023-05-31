@@ -212,7 +212,7 @@ const Breakout = () => {
 
   return (
     <Box m={'20px'}>
-      <Header title={"Breakout"} subtitle={""} addlink={""} withbtn={false} variant={""} />
+      <Header title={"Breakout"} subtitle={"Accéder, modifier et supprimer toutes les données de reglette de chaque centrale"} addlink={""} withbtn={false} variant={""} />
 
       <Box
       

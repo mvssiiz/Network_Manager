@@ -56,7 +56,7 @@ const LSW = ({role}:{role:any}) => {
 
   return (
 <Box m={"20px"}>
-  <Header title="LSW" subtitle="Description" addlink='/LSW/add' withbtn={role==='Administrateur'} variant={''}/>
+  <Header title="LSW" subtitle="Accéder, modifier ou supprimer les données de tous les commutateurs LSW" addlink='/LSW/add' withbtn={role==='Administrateur'} variant={''}/>
 
       <Box
       
